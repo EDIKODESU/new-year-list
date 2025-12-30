@@ -1,6 +1,8 @@
         body {
             margin: 0;
-            background: #0b0b12;
+            padding: 0;
+            height: 100%;
+            background: #19192a;
             overflow: hidden;
             font-family: Arial, sans-serif;
         }
@@ -141,9 +143,13 @@
 
         /* Дощ */
         #rain {
-            position: absolute;
+            position: fixed;
             inset: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
+            overflow: hidden;
+            z-index: 9999;
         }
 
         .word {
@@ -178,7 +184,7 @@
         #rotate-message {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgb(0 0 0 / 80%);
             color: white;
             display: none;
             justify-content: center;
