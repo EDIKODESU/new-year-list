@@ -1,8 +1,8 @@
 const colors = ['#ff4d6d', '#ffd166', '#7df9ff', '#9dff00', '#c77dff'];
 const wishes = ['Щастя ✨', 'Любові', 'Тепла', 'Світла', 'Натхнення', 'Коханнячка ♥️', 
     'Більше усміхайся', 'Здоровʼя', 'Перемоги', 'Найтепліших обіймів', 'Щоб тебе кусав я, а не Бостон',
-    'Поважай своє "Я"', 'Вір у себе', 'Я в тебе вірю', 'Ти неймовірна ☀️', 'З Новим роком!🎄','Будь сильнішою'
-,'Будь найЛєрною Лєрою', 'Захоплюйся собой', 'Побільше мандаринів 🍊'];
+    'Поважай своє "Я"', 'Вір у себе', 'Я в тебе вірю', 'Ти неймовірна ☀️', 'З Новим роком!🎄', 'Будь сильнішою',
+    'Будь найЛєрною Лєрою', 'Захоплюйся собой', 'Побільше мандаринів 🍊'];
 
 const topGarland = document.getElementById('garlandTop');
 const bottomGarland = document.getElementById('garlandBottom');
@@ -15,7 +15,6 @@ const rightDoor = document.querySelector('.right');
 const rain = document.getElementById('rain');
 let currentCard = 0;
 
-/* Гірлянди */
 function createGarland(container) {
     container.innerHTML = '';
     const count = Math.floor(window.innerWidth / 40);
@@ -32,7 +31,6 @@ createGarland(topGarland);
 createGarland(bottomGarland);
 window.addEventListener('resize', () => { createGarland(topGarland); createGarland(bottomGarland); });
 
-/* Клік на картку */
 cards.forEach(cardEl => {
     addDot(cardEl);
     cardEl.addEventListener('click', () => {
@@ -50,15 +48,13 @@ cards.forEach(cardEl => {
                 cardEl.remove();
                 currentCard++;
                 if (currentCard >= cards.length) {
-                    showCard(); // показ листівки
+                    showCard(); 
                 }
             }
         });
     });
 });
 
-
-/* Показ листівки */
 function showCard() {
     cardWrapper.style.pointerEvents = 'auto';
     gsap.to(card, { opacity: 1, duration: 0.3 });
@@ -69,7 +65,6 @@ card.addEventListener('click', () => {
     cardWrapper.style.pointerEvents = 'none';
     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }});
     tl
-        // .to(card, { z: 40, duration: 0.3 }, '<')
         .to(card, {
             z: -200,
             scale: 0.25,
@@ -81,7 +76,6 @@ card.addEventListener('click', () => {
         .call(startRain);
 });
 
-/* Дощ побажань */
 function startRain() {
     cardWrapper.remove();
     setInterval(createWord, 350);
